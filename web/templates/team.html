@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+{% block script %}
+{% endblock script %}
+{% block my_content %}
+<h1 style="text-align:center; padding:10px"><strong>{{context.name}}</strong></h1>
+<h4 style="text-align:center">{{context.total_avg}}</h1>
+
+<div class="row">
+    <div class="col-sm">
+        <!-- small box -->
+        <div class="small-box bg-warning" style="margin:10px; margin-left: 30px;">
+            <div class="inner">
+                <h3>{{context.auto_avg}}</h3>
+
+                <p>Average auto points</p>
+            </div>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-sm">
+        <!-- small box -->
+        <div class="small-box bg-warning" style="margin:10px">
+            <div class="inner">
+                <h3>{{context.teleop_avg}}<sup style="font-size: 20px"></sup></h3>
+
+                <p>Average teleop points</p>
+            </div>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-sm">
+        <!-- small box -->
+        <div class="small-box bg-warning" style="margin:10px">
+            <div class="inner">
+                <h3>{{context.climb_avg}}<sup style="font-size: 20px"></sup></h3>
+
+                <p>Average climb points</p>
+            </div>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-sm">
+        <!-- small box -->
+        <div class="small-box bg-warning" style="margin:10px">
+            <div class="inner">
+                <h3>{{context.cycle_avg}}</h3>
+
+                <p>Average cycles</p>
+            </div>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-sm">
+        <!-- small box -->
+        <div class="small-box bg-warning" style="margin:10px">
+            <div class="inner">
+                <h3>{{context.rating}}</h3>
+
+                <p>Average rating</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm">
+        <!-- small box -->
+        <div class="small-box bg-warning" style="margin:10px; margin-right: 30px;">
+            <div class="inner">
+                <h3>{{context.failure}}</h3>
+
+                <p>Probability of no-show</p>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6-graph" style="margin:auto">
+            <div class="chart" id="team-graph">
+            </div>
+        </div>
+            
+
+</div>
+</div>
+<script>
+    var graphs = {{ context.graph | safe }};
+    Plotly.plot('team-graph', graphs, {});
+</script> 
+<!-- {% endblock my_content %}

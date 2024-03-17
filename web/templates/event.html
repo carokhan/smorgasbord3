@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+{% block script %}
+<!-- 
+put your custom script or styling here
+
+-->
+{% endblock script %}
+
+
+{% block my_content %}
+<div class="row">
+    <div class="col-sm" style="margin-left: 30px">
+        <!-- small box -->
+        <div class="small-box bg-warning" style="margin:10px">
+            <div class="inner">
+                <h3>{{context.auto_average}}</h3>
+
+                <p>Average auto points</p>
+            </div>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-sm">
+        <!-- small box -->
+        <div class="small-box bg-warning" style="margin:10px">
+            <div class="inner">
+                <h3>{{context.teleop_average}}<sup style="font-size: 20px"></sup></h3>
+
+                <p>Average teleop points</p>
+            </div>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-sm">
+        <!-- small box -->
+        <div class="small-box bg-warning" style="margin:10px">
+            <div class="inner">
+                <h3>{{context.climb_average}}<sup style="font-size: 20px"></sup></h3>
+
+                <p>Average climb points</p>
+            </div>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-sm">
+        <!-- small box -->
+        <div class="small-box bg-warning" style="margin:10px">
+            <div class="inner">
+                <h3>{{context.failure}}</h3>
+
+                <p>Average chance of no-show</p>
+            </div>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-sm">
+        <!-- small box -->
+        <div class="small-box bg-warning" style="margin:10px">
+            <div class="inner">
+                <h3>{{context.cycles}}</h3>
+
+                <p>Average cycles</p>
+            </div>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-sm" style="margin-right: 30px">
+        <!-- small box -->
+        <div class="small-box bg-warning" style="margin:10px">
+            <div class="inner">
+                <h3>{{context.matches}}</h3>
+
+                <p>Matches complete</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+            <div class="col-6-graph" style="margin:auto">
+                <div class="chart" id="full-graph">
+                </div>
+            </div>
+
+
+</div>
+</div>
+<script>
+    var graphs = {{ context.graph | safe }};
+    Plotly.plot('full-graph', graphs, {});
+</script>
+{% endblock my_content %}

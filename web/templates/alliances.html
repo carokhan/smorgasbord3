@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block script %}
+{% endblock script %}
+{% block my_content %}
+<h6 style="margin-top:10px; font-size: 30px; text-align:center"><span style="color:crimson">{{context.red1}} • {{context.red2}} • {{context.red3}}</span>   ✧   <span style="color:dodgerblue">{{context.blue1}} • {{context.blue2}} • {{context.blue3}}</span></h6>
+<h1 style="text-align:center; font-size: 60px"><span style="color:crimson">{{context.red_score}}</span> -
+    <span style="color:dodgerblue">{{context.blue_score}}</span></h1>
+<h4 style="font-size: 30px; text-align:center">
+    {% if context.red_score > context.blue_score %}
+    <span style="color:crimson">
+    {% elif context.blue_score > context.red_score %}
+    <span style="color:dodgerblue">
+    {% else %}
+    <span>
+    {% endif %}
+    {{context.percentage}}% (via statbotics.io)
+    </span>
+</h4>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6-graph" style="margin:auto">
+            <div class="chart" id="alliance-graph">
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<script>
+    var graphs = {{ context.graph | safe }};
+    Plotly.plot('alliance-graph', graphs, {});
+</script> 
+<!-- {% endblock my_content %}
