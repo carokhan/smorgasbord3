@@ -12,9 +12,12 @@ with open(os.path.join(config.BASE_DIR, 'web/data/teams.yaml'), "r") as f:
 
 
 def overall_event(df):
-    df["teamNumber2"] = df["teamNumber"]
+    df["teamNumberB"] = df.teamNumber
     avgs = df.groupby(["teamNumber"]).mean().round(2)
-    avgs["teamName"] = avgs.apply(lambda row: teamnames[int(row.teamNumber2)], axis=1)
+    avgs.reset_index(inplace=True)
+    print(avgs.head())
+    avgs["teamName"] = avgs.teamNumber.apply(lambda x: teamnames[int(x)])
+    print(avgs.head())
 
     fig = px.scatter(
         avgs,
