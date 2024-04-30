@@ -12,3 +12,8 @@ Features:
 Takes .json files from scouting app and, upon upload, pushes all data to PostgreSQL database. Designed to be run online as well as locally due to restrictions at competition venue. Uses The Blue Alliance API for match schedule and Statbotics API for match predictions. Built in Flask.
 
 ## Screenshots
+![pit view](./screenshots/image.png)
+
+![prediction and radar chart](./screenshots/image2.png)
+
+![event view](./screenshots/image3.png)
